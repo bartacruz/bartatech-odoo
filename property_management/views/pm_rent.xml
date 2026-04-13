@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="pm_rent_list" model="ir.ui.view">
+        <field name="name">pm.rent.list</field>
+        <field name="model">pm.rent</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="property_id" />
+                <field name="tenant_id" />
+                <field name="contact_phone" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="pm_rent_form">
+        <field name="name">pm.rent.form</field>
+        <field name="model">pm.rent</field>
+        <field name="arch" type="xml">
+            <form string="Rent">
+                <group>
+                    <field name="name" invisible="name == 'New'" />
+                    <field name="property_id" invisible="context.get('default_property_id',False)" />
+                    <field name="tenant_id" />
+                    <field name="contact_phone" widget="phone" readonly="True" />
+                    <field name="date_start" />
+                    <field name="date_end" />
+                    <field name="date_checkout" />
+                    <field name="state" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="pm_rent_calendar">
+        <field name="name">pm.rent.calendar</field>
+        <field name="model">pm.rent</field>
+        <field name="arch" type="xml">
+            <calendar string="Rentass"
+                date_start="date_start"
+                date_stop="date_end"
+                all_day="is_all_day"
+                event_open_popup="true"
+                color="state"
+                mode="month"
+            >
+                <field name="state" filters="1" />
+                <field name="property_id" string="Location" filters="1" />
+                <field name="tenant_id" string="Tenant" />
+                <field name="contact_phone" widget="phone" readonly="True" />
+                <field name="date_checkout" />
+
+            </calendar>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_pm_rent">
+        <field name="name">Rentas</field>
+        <field name="res_model">pm.rent</field>
+        <field name="view_mode">calendar,list,form</field>
+        <field name="help">Manage your rents here.</field>
+    </record>
+</odoo>

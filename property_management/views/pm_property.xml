@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="pm_property_list">
+      <field name="name">pm.property.list</field>
+      <field name="model">pm.property</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name" />
+          <field name="property_type_id" />
+          <field name="street" />
+          <field name="city" />
+          <field name="state_id" />
+          <field name="tenant_id" />
+          <field name="status" />
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pm_property_form">
+      <field name="name">pm.property.form</field>
+      <field name="model">pm.property</field>
+      <field name="arch" type="xml">
+        <form string="Property">
+          <header>
+            <button name="action_rent" type="object" string="Rent/Reserve" />
+            <field name="status" widget="statusbar" />
+          </header>
+          <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button class="oe_stat_button" type="object"
+                name="show_rents"
+                icon="fa-calendar"
+                context="{'partner_id': id, 'partner_name': name}">
+                <field string="Rents" name="rent_count" widget="statinfo" />
+              </button>
+            </div>
+            <div class="oe_title">
+              <h1>
+                <field name="name" placeholder="e.g. John's Appartment or Room 5" />
+              </h1>
+            </div>
+            <group>
+              <group>
+                <label for="street" string="Address" />
+                <div class="o_address_format">
+                  <field name="street" placeholder="Street..." class="o_address_street" />
+                  <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                  <field name="city" placeholder="City" class="o_address_city" />
+                  <field name="state_id" class="o_address_state" placeholder="State" domain="[('country_id', '=', country_id)]"
+                    options='{"no_open": True}' />
+                  <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                  <field name="country_id" placeholder="Country" class="o_address_country"
+                    options='{"no_open": True, "no_create": True}' />
+                </div>
+                <field name="phone" />
+              </group>
+              <group>
+                <field name="property_type_id" />
+                <field name="tenant_id" />
+                <field name="checkout_time" />
+              </group>
+            </group>
+
+          </sheet>
+          <chatter />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_pm_property">
+      <field name="name">Properties</field>
+      <field name="res_model">pm.property</field>
+      <field name="view_mode">list,form</field>
+      <field name="help">Manage your properties here.</field>
+    </record>
+  </data>
+</odoo>
