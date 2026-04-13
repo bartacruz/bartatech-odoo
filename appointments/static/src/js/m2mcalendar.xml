@@ -1,0 +1,7 @@
+<templates xml:space="preserve">
+    <t t-name="appointments.M2MCalendarWidget">
+        <div class="o_m2m_calendar_container">
+            <div t-ref="calendar-container"/>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="appointment_fields" model="ir.ui.view">
+        <field name="name">res.partner.appointments.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+
+                <button class="oe_stat_button" type="object"  name="action_open_appointments" icon="fa-clock" context="{'provider_id': id}">
+                    <field string="Appointments" name="appointment_count" widget="statinfo" />
+                </button>
+            </div>
+            <page name="contact_addresses" position="after">
+                <page string="Time Shifts">
+                    <field name="time_shift_ids"/>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

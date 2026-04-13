@@ -1,0 +1,11 @@
+.o_field_m2m_calendar {
+    width:100%;
+}
+.o_m2m_calendar_container {
+    background: white;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-top: 10px;
+    min-height: 300px;
+}

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <record model="ir.ui.view" id="time_shift_list">
+    <field name="name">time_shift_list</field>
+    <field name="model">time.shift</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name" />
+        <field name="day" />
+        <field name="time_from" widget="float_time" />
+        <field name="time_to" widget="float_time" />
+        <field name="slot_duration" widget="float_time" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="time_shift_form">
+    <field name="name">time_shift_form</field>
+    <field name="model">time.shift</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name" />
+            <field name="day" />
+            <field name="time_from" widget="float_time" />
+            <field name="time_to" widget="float_time" />
+            <field name="slot_duration" widget="float_time" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="time_slot_list">
+        <field name="name">time.slot.list</field>
+        <field name="model">time.slot</field>
+        <field name="arch" type="xml">
+            <list>
+              <field name="owner_id"/>
+              <field name="date_from"/>
+              <field name="date_to"/>
+            </list>
+        </field>
+    </record>
+      <record model="ir.ui.view" id="time_slot_calendar">
+        <field name="name">time.slot.calendar</field>
+        <field name="model">time.slot</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_from" string="Slots">
+                <field name="date_from"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

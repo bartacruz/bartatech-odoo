@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+     <record model="ir.ui.view" id="appontment_list">
+      <field name="name">appointment_list</field>
+      <field name="model">appointment</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="provider_id"/>
+          <field name="requester_id"/>
+          <field name="date_from"/>
+          <field name="date_to"/>
+          <field name="duration" widget="float_time"/>
+          <field name="state"/>
+        </list>
+      </field>
+    </record>
+</odoo>

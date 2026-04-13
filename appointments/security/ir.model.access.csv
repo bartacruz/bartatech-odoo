@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_appointments_appointment,appointments.appointment,appointments.model_appointment,base.group_user,1,1,1,1
+access_appointments_time_shift,appointments.time_shift,appointments.model_time_shift,base.group_user,1,1,1,1
+access_appointments_time_slot,appointments.time_slot,appointments.model_time_slot,base.group_user,1,1,1,1
+access_appointments_appointment_wizard,appointments.appointment_wizard,appointments.model_appointment_wizard,base.group_user,1,1,1,1
