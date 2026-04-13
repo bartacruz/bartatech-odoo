@@ -27,8 +27,9 @@ class PMProperty(models.Model):
     
     property_type_id = fields.Many2one('pm.property.type')
     rent_ids = fields.One2many('pm.rent','property_id')
-    rent_count = fields.Integer(compute='_compute_rent_count')
-    tenant_id = fields.Many2one('res.partner', compute="_compute_tenant",store=True)
+    rent_count = fields.Integer(compute='_compute_rent_data', store=True)
+    upcomming_rent_ids = fields.Many2many('pm.rent',compute="_compute_rent_data", store=True)
+    tenant_id = fields.Many2one('res.partner', compute="_compute_rent_data",store=True)
     country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=lambda self: self.env.company.country_id)
     checkout_time = fields.Float()
     
@@ -38,23 +39,19 @@ class PMProperty(models.Model):
         if 'checkout_time' in fields_list:
             default_val = self.env['ir.config_parameter'].sudo().get_param('property_management.pm_checkout_time', 10.0)
             res.update({'checkout_time': float(default_val)})
-            
         return res
-    @api.depends('rent_ids')
-    def _compute_rent_count(self):
+
+    @api.depends('rent_ids','rent_ids.state')
+    def _compute_rent_data(self):
         for record in self:
             record.rent_count = len(record.rent_ids)
-    
-    @api.depends('rent_ids.state')
-    def _compute_tenant(self):
-        for record in self:
+            record.upcomming_rent_ids = record.rent_ids.filtered(lambda rent: rent.state in ['active','reserved'])
             record.tenant_id = record.rent_ids.filtered(lambda rent: rent.state == 'active').tenant_id
             if record.tenant_id and record.state == 'available':
                 record.state = 'rented'
             if not record.tenant_id and record.state == 'rented':
                 record.state = 'available'
-            
-    
+
     def show_rents(self):
         action = self.env.ref("property_management.action_pm_rent").read()[0]
         action["context"] = {'default_property_id':self.id}

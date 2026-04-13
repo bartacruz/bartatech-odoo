@@ -60,7 +60,7 @@
         <form string="Property">
           <header>
             <button name="action_rent" type="object" string="Rent/Reserve" />
-            <field name="state" widget="statebar" />
+            <field name="state" widget="statusbar" />
           </header>
           <sheet>
             <div name="button_box" class="oe_button_box">
@@ -94,10 +94,14 @@
               <group>
                 <field name="property_type_id" />
                 <field name="tenant_id" />
-                <field name="checkout_time" />
+                <field name="checkout_time" widget="float_time" />
               </group>
             </group>
-
+            <notebook>
+              <page name="rents" string="Upcomming Rents">
+                <field name="upcomming_rent_ids" />
+              </page>
+            </notebook>
           </sheet>
           <chatter />
         </form>
