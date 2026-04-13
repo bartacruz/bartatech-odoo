@@ -17,7 +17,7 @@ class PMProperty(models.Model):
         ondelete="restrict",
     )
     description = fields.Html(string='Description', translate=html_translate, sanitize_attributes=False, sanitize_form=False)
-    status = fields.Selection([
+    state = fields.Selection([
         ('available','Available'),
         ('rented','Rented'),
         ('not available','Not Available'),
@@ -49,10 +49,10 @@ class PMProperty(models.Model):
     def _compute_tenant(self):
         for record in self:
             record.tenant_id = record.rent_ids.filtered(lambda rent: rent.state == 'active').tenant_id
-            if record.tenant_id and record.status == 'available':
-                record.status = 'rented'
-            if not record.tenant_id and record.status == 'rented':
-                record.status = 'available'
+            if record.tenant_id and record.state == 'available':
+                record.state = 'rented'
+            if not record.tenant_id and record.state == 'rented':
+                record.state = 'available'
             
     
     def show_rents(self):
