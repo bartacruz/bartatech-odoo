@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.clinic</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Clinic" string="Clinic" name="clinic">
+                    <h2>Bookings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <setting string="Booking Departments" help="Departments that can have bookings">
+                            <field name="clinic_booking_departments" />
+                        </setting>
+                    </div>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
