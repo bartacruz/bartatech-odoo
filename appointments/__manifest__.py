@@ -20,9 +20,9 @@
     ],
     "assets": {
         "web.assets_backend": [
-            "appointments/static/src/js/m2mcalendar.css",
-            "appointments/static/src/js/m2mcalendar.js",
-            "appointments/static/src/js/m2mcalendar.xml",
+            "appointments/static/src/js/m2mcalendar.esm.js",
+            "appointments/static/src/scss/m2mcalendar.css",
+            "appointments/static/src/views/m2mcalendar.xml",
         ],
     },
 }

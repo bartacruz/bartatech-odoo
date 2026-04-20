@@ -9,7 +9,7 @@
     "depends": ["hr", "resource_booking", "web"],
     "assets": {
         "web.assets_backend": [
-            "clinic/static/src/js/calendar_model.js",
+            "clinic/static/src/js/calendar_model.esm.js",
         ],
     },
     "data": [

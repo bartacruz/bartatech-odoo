@@ -13,7 +13,7 @@
     "depends": ["web"],
     "assets": {
         "web.assets_backend": [
-            "force_developer_mode/static/src/js/force_developer_mode.js"
+            "force_developer_mode/static/src/js/force_developer_mode.esm.js"
         ]
     },
 }
