@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # from odoo import http
 
 
@@ -19,4 +18,3 @@
 #         return http.request.render('time_slots.object', {
 #             'object': obj
 #         })
-

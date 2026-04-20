@@ -6,7 +6,12 @@
     "category": "Industries/Medical",
     "version": "18.0.0.0.1",
     "license": "AGPL-3",
-    "depends": ["hr", "resource_booking"],
+    "depends": ["hr", "resource_booking", "web"],
+    "assets": {
+        "web.assets_backend": [
+            "clinic/static/src/js/calendar_model.js",
+        ],
+    },
     "data": [
         "security/ir.model.access.csv",
         "views/clinic_records.xml",

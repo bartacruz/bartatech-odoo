@@ -2,5 +2,5 @@
 <odoo>
     <menuitem id="menu_pm_root" name="Property Management" sequence="2"/>
     <menuitem id="menu_pm_properties" name="Properties" parent="menu_pm_root" sequence="1" action="action_pm_property"/>
-    <menuitem id="menu_pm_property_types" name="Property Types" parent="menu_pm_root" sequence="2" action="action_pm_property_type"/>    
+    <menuitem id="menu_pm_property_types" name="Property Types" parent="menu_pm_root" sequence="2" action="action_pm_property_type"/>
 </odoo>
