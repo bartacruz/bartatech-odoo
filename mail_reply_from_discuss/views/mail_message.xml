@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="action_reply_wizard" model="ir.actions.act_window">
+        <field name="name">Reply e-mail</field>
+        <field name="res_model">mail.reply.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_message_form_custom" model="ir.ui.view">
+        <field name="name">mail.message.form.custom</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <form string="Mensaje Técnico">
+                <header>
+                    <button name="%(action_reply_wizard)d" string="Responder" type="action" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="subject" />
+                        <field name="email_from" />
+                        <field name="date" />
+                    </group>
+                    <notebook>
+                        <page string="Cuerpo">
+                            <field name="body" widget="html" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+</odoo>

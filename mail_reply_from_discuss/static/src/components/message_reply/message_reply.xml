@@ -1,0 +1,12 @@
+<templates xml:space="preserve">
+    <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//*[contains(@class, 'o-mail-Message-header')]" position="inside">
+            <button t-if="props.message.email_from"
+                    class="btn btn-link btn-sm"
+                    title="Reply by Email"
+                    t-on-click="onClickReplyEmail">
+                <i class="fa fa-reply-all"/>
+            </button>
+        </xpath>
+    </t>
+</templates>
